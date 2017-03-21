@@ -1,0 +1,11 @@
+---
+- name: remove default
+  file: path=/etc/nginx/sites-enabled/default state=absent
+- name: Creates directory
+  file: path=/var/www/app/public state=directory owner=www-data group=www-data mode=0775
+- name: copy app.js
+  template: src=app.js dest=/var/www/app/app.js
+- name: copy nginx conf
+  template: src=app.conf dest=/etc/nginx/sites-enabled/app.conf
+  notify:
+    - Reload Nginx

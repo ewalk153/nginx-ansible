@@ -1,0 +1,7 @@
+---
+- hosts: all
+  sudo: true
+  roles:
+    - { role: innohub-ansible.nginx-passenger }
+    - node
+    - service_foo
